@@ -2,46 +2,78 @@ pipeline {
     agent any
 
     environment {
-        // Example environment variables
-        APP_NAME = 'MyApp'
-        BUILD_ENV = 'production'
+        APP_NAME = 'MCP_Assignment'
+        BUILD_ENV = 'Devlopment'
+        VENV_DIR = 'venv'
     }
 
     stages {
         stage('Checkout') {
             steps {
-                // Checkout source code from GitHub
-                git branch: 'master', url: 'https://github.com/ManjuPrabhu08/master.git'
+                echo "Cloning repository..."
+                git branch: 'master', url: 'https://github.com/ManjuPrabhu08/MCP_Assignment.git'
             }
         }
-        stage('Build') {
+
+        stage('Setup Python Environment') {
             steps {
-                // Run build commands (replace with your build tool)
-                echo "Building ${APP_NAME} for environment ${BUILD_ENV}"
-                sh 'echo "Run your build command here, e.g., mvn clean package"'
+                echo "Creating Python virtual environment and installing dependencies..."
+                sh '''
+                    python3 -m venv ${VENV_DIR}
+                    . ${VENV_DIR}/bin/activate
+                    pip install --upgrade pip
+                    pip install -r requirements.txt
+                '''
             }
         }
+
         stage('Test') {
             steps {
-                // Run tests (unit, integration, etc.)
-                echo "Running tests for ${APP_NAME}"
-                sh 'echo "Run your test command here, e.g., mvn test"'
+                echo "Running Python tests (if any)..."
+                sh '''
+                    . ${VENV_DIR}/bin/activate
+                    pytest || echo "No tests found, skipping..."
+                '''
             }
         }
-        stage('Deploy') {
+
+        stage('Run MCP Server') {
             steps {
-                // Deployment steps (replace with your deployment logic)
-                echo "Deploying ${APP_NAME} to ${BUILD_ENV}"
-                sh 'echo "Run your deployment command here, e.g., scp target/*.jar user@server:/deploy/"'
+                echo "Starting MCP server..."
+                sh '''
+                    . ${VENV_DIR}/bin/activate
+                    nohup python mcp_server.py > server.log 2>&1 &
+                    echo $! > server.pid
+                '''
+            }
+        }
+
+        stage('Run MCP Client') {
+            steps {
+                echo "Running MCP client..."
+                sh '''
+                    . ${VENV_DIR}/bin/activate
+                    python mcp_client.py
+                '''
             }
         }
     }
+
     post {
         success {
-            echo 'Pipeline completed successfully!'
+            echo '✅ Pipeline completed successfully!'
         }
         failure {
-            echo 'Pipeline failed!'
+            echo '❌ Pipeline failed!'
+        }
+        always {
+            echo 'Cleaning up server if running...'
+            sh '''
+                if [ -f server.pid ]; then
+                    kill $(cat server.pid) || true
+                    rm -f server.pid
+                fi
+            '''
         }
     }
 }
