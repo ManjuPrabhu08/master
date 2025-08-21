@@ -1,0 +1,47 @@
+pipeline {
+    agent any
+
+    environment {
+        // Example environment variables
+        APP_NAME = 'MyApp'
+        BUILD_ENV = 'production'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout source code from GitHub
+                git branch: 'main', url: 'https://github.com/ManjuPrabhu08/master.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                // Run build commands (replace with your build tool)
+                echo "Building ${APP_NAME} for environment ${BUILD_ENV}"
+                sh 'echo "Run your build command here, e.g., mvn clean package"'
+            }
+        }
+        stage('Test') {
+            steps {
+                // Run tests (unit, integration, etc.)
+                echo "Running tests for ${APP_NAME}"
+                sh 'echo "Run your test command here, e.g., mvn test"'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                // Deployment steps (replace with your deployment logic)
+                echo "Deploying ${APP_NAME} to ${BUILD_ENV}"
+                sh 'echo "Run your deployment command here, e.g., scp target/*.jar user@server:/deploy/"'
+            }
+        }
+    }
+    post {
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed!'
+        }
+    }
+}
