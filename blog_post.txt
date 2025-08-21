@@ -1,0 +1,29 @@
+Networking
+Simplifying Network Management in the Real World with AI-Driven Automation
+
+In my first of three posts about how businesses are leveraging Cisco solutions to simplify operations through a platform approach, I looked at the cloud operating model and how Cisco platforms, including Meraki, Intersight, and Catalyst, deliver the crucial capabilities needed for a smooth transition to this model.
+
+In this second installation, my focus is on how organizations can benefit from AI-driven automation for daily operations that span network and data center so IT resources can focus on strategic efforts.
+
+Solving the challenges of manual administration
+You may have perused the insightful EMA report, which reveals that a staggering 27% of all network complications stem from manual administration errors like improper configuration changes. Now, picture a world where these issues are slashed by nearly a third. Exciting, isn’t it?
+
+The secret sauce to achieving this reduction lies in automation. By automating manual management tasks, we lighten the workload and shrink the potential for error. Activities like configurations, compliance checks, and monitoring can all be carried out seamlessly, with consistent policies guiding the process. And the cherry on top? These policies are continuously enriched with AI insights mined from performance data across the platform.
+
+How it works in real life
+I know it can sound overly simple when we talk in generalities about what technology—especially AI—can do. So let me paint a picture of this streamlined operation using a real-world example—Renown Health. This healthcare provider, the largest in northern Nevada, defies the odds with a compact IT team of just three supporting a workforce of over 6,500 spread across more than 70 sites and catering to 74,000 Nevadans monthly.
+
+At Renown Health, telemedicine, collaborative workflows, and a hunger for innovation are the backbone of the operation. Digital touchpoints stretch their community health programs to remote patients, linking them with medical specialists via video sessions.
+
+The command center of this extensive network is the Cisco Catalyst Center, viewed by Renown Health as the driving force behind its AI-powered automation, robust security, and centralized network activity visibility. With this tool in their arsenal, their three-person team is able to seamlessly manage a homogenous network with 1,400 access points and an impressive 48,000 ports.
+
+Dustin Metteer, Senior Network Engineer at Renown Health, explains, “Cisco Catalyst Center is like having a network operations center technician 24/7. Essentially, it’s a NOC-in-a-box. Alerts go to various teams when there’s a problem and level two engineers get the information they need to troubleshoot. And suddenly, we have the information we need and can transition from reactive to proactive support.”
+
+With the Cisco Catalyst Center at the helm of network management, the investment in time and effort needed to run the network and execute upgrades can be dramatically reduced. For Renown Health, that means upgrades are strategically timed to be applied to specific network users or segments without causing any service disruption—a critical requirement in the high-stakes realm of healthcare.
+
+And here’s where Catalyst Center’s automation tools come in. With these capabilities, a single member of the IT team can orchestrate the setup of 20 locations in a single night, all from the comfort of their desk. This level of efficiency was unheard of previously—it typically took a week or more to accomplish. Simply put, it’s revolutionizing the way our customers can operate and manage networks.
+
+This is just one example of how IT organizations and the companies they support are reaping the benefits of a cloud-managed IT infrastructure and operational simplicity. Organizations across industries—from education to transportation—can simplify operations through AI-driven automation, giving IT time back from onerous, repetitive network configuration tasks so they can focus on innovation to meet business needs.
+
+Join me next month, when I show how a platform approach can simplify operations, offering end-to-end assurance that supports business agility, performance, and faster troubleshooting.
+
